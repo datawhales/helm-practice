@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: mongo
+  tag: 4.2.23
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 27017
+  targetPort: 27017
+
+ingress:
+  enabled: false
+
+persistence:
+  enabled: true
+  size: 100Gi
+
+secret:
+  mongo:
+    MONGO_INITDB_ROOT_USERNAME: myuser
+    MONGO_INITDB_ROOT_PASSWORD: mypassword
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
